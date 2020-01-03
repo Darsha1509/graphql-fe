@@ -20,17 +20,17 @@ class Directors extends React.Component {
       open: true,
       ...data,
     });
-  }
+  };
 
   handleClose = () => { this.setState({ name: '', age: 0, id: null, open: false }); };
 
-  handleChange = ({ target }) => { this.setState({ [name]: target.value }); };
+  handleChange = name => ({ target }) => { this.setState({ [name]: target.value }); };
 
   render() {
     const { name, age, id, open } = this.state;
     const { classes } = this.props;
 
-    return(
+    return (
       <>
         <DirectorsForm handleChange={this.handleChange} selectedValue={{ name, age, id }} open={open} onClose={this.handleClose} />
         <div className={classes.wrapper}>
@@ -42,6 +42,5 @@ class Directors extends React.Component {
       </>
     );
   }
-}
-
+};
 export default withHocs(Directors);
